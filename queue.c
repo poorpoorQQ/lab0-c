@@ -79,8 +79,8 @@ bool q_insert_head(queue_t *q, char *s)
 
     /* Don't forget to allocate space for the string and copy it */
     char *ele_val = malloc(strlen(s) + 1);
-    if (ele_val == false) {
-        free(ele_val);
+    if (ele_val == NULL) {
+        // free(ele_val);
         free(newh);
         return false;
     }
@@ -118,8 +118,8 @@ bool q_insert_tail(queue_t *q, char *s)
 
     /* Don't forget to allocate space for the string and copy it */
     char *ele_val = malloc(strlen(s) + 1);
-    if (ele_val == false) {
-        free(ele_val);
+    if (ele_val == NULL) {
+        // free(ele_val);
         free(newh);
         return false;
     }
