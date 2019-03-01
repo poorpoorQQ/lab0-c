@@ -177,7 +177,9 @@ int q_size(queue_t *q)
 {
     /* You need to write the code for this function */
     /* Remember: It should operate in O(1) time */
-    return 0;
+    if (q == NULL)
+        return 0;
+    return q->quesize;
 }
 
 /*
@@ -190,4 +192,19 @@ int q_size(queue_t *q)
 void q_reverse(queue_t *q)
 {
     /* You need to write the code for this function */
+    if (q == NULL || q->quesize == 0)
+        return;
+
+    list_ele_t *temp1, *temp2;
+    temp1 = q->head->next;
+    q->tail = q->head;
+    temp2 = q->tail;
+    q->tail->next = NULL;
+
+    for (unsigned int i = 1; i < q->quesize; i++) {
+        q->head = temp1;
+        temp1 = q->head->next;
+        q->head->next = temp2;
+        temp2 = q->head;
+    }
 }
